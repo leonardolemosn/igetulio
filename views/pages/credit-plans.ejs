@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <%- include ('../partials/header-login') %>
+
+  <main class="container">
+
+    <div class="">
+      <div class="row">
+        <a class="btn-floating btn-large waves-effect waves-light green" href="/home">
+          <i class="large material-icons">keyboard_backspace</i>
+        </a>
+        <div class="col s12 m12">
+          <div class="row">
+            <div class="card-panel">
+              <div class="input-field">
+                <a href="/credit-plans/register">
+                  <button class="btn waves-effect waves-light">Cadastrar novo plano</button>
+                </a>
+              </div>
+            </div>
+            &nbsp;
+            <% plans.docs.forEach(function(plan){ %>
+              <%- include('../partials/credit-plans-card', { plan: plan }); %>
+            <% }); %>
+
+            <div class="card-panel col s12 m12 center">
+              <ul class="pagination">
+                <li class="waves-effect <%= plans.hasPrevPage ? '': 'disabled'%>"><a href="<%=plans.hasPrevPage ? `?page=${plans.prevPage}` : '/home' %>"><i class="material-icons">chevron_left</i></a></li>
+                <% (new Array(plans.totalPages)).fill(undefined).forEach(function (page, idx) {%>
+                  <li class="<%= plans.page === idx + 1 ? 'active blue-grey': ''%>"><a href="?page=<%=idx+1%>"><%=idx + 1%></a></li>
+                <%});%>
+                <li class="waves-effect <%= plans.hasNextPage ? '': 'disabled'%>"><a href="<%=plans.hasNextPage ? `?page=${plans.nextPage}` : `` %>"><i class="material-icons">chevron_right</i></a></li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <%- include ('../partials/footer') %>
+
+</body>
+
+</html>

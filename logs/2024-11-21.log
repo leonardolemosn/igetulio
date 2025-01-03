@@ -1,0 +1,28 @@
+2024-11-21 20:43:35.069 DEBUG Request data: Igetulio 
+2024-11-21 20:43:52.082 ERROR Erro ao fazer o upload do arquivo:error:1E08010C:DECODER routines::unsupported
+{"library":"DECODER routines","reason":"unsupported","code":"ERR_OSSL_UNSUPPORTED"}
+Error: error:1E08010C:DECODER routines::unsupported
+    at Sign.sign (node:internal/crypto/sig:131:29)
+    at Object.sign (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jwa/index.js:152:45)
+    at Object.jwsSign [as sign] (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jws/lib/sign-stream.js:32:24)
+    at GoogleToken.requestToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:196:31)
+    at GoogleToken.getTokenAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:135:21)
+    at GoogleToken.getToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:77:21)
+    at JWT.refreshTokenNoCache (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:156:36)
+    at JWT.refreshToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:149:24)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:265:28)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:81:26)
+    at JWT.requestAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:338:34)
+    at JWT.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:332:25)
+    at GoogleAuth.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/googleauth.js:556:23)
+    at async Upload.makeRequest (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:316:21)
+    at async Upload.createURIAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:142:22) 
+2024-11-21 20:47:12.079 ERROR Erro ao processar OCR:connect ETIMEDOUT 44.214.84.87:443
+{"message":"connect ETIMEDOUT 44.214.84.87:443","name":"Error","stack":"Error: connect ETIMEDOUT 44.214.84.87:443\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)","config":{"url":"https://ocr.igetulio.com/ocr/1b551dfe8d27f0bdc447a96e296b4479","method":"get","headers":{"Accept":"application/json, text/plain, */*","User-Agent":"axios/0.19.2"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1},"code":"ETIMEDOUT"}
+Error: connect ETIMEDOUT 44.214.84.87:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) 
+2024-11-21 20:47:44.845 ERROR Erro ao processar OCR:connect ETIMEDOUT 44.214.84.87:443
+{"message":"connect ETIMEDOUT 44.214.84.87:443","name":"Error","stack":"Error: connect ETIMEDOUT 44.214.84.87:443\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)","config":{"url":"https://ocr.igetulio.com/ocr/e0c48d81b4189c027bd3afd84288dd48","method":"get","headers":{"Accept":"application/json, text/plain, */*","User-Agent":"axios/0.19.2"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1},"code":"ETIMEDOUT"}
+Error: connect ETIMEDOUT 44.214.84.87:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) 
+

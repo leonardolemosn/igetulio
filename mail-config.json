@@ -1,0 +1,14 @@
+Recomendamos sempre configurar como IMAP
+
+Host de entrada ->> igetulio.com ou server2.servhost.com.br ou 208.115.238.130
+Host de Saída ->> igetulio.com ou server2.servhost.com.br ou 208.115.238.130
+Nome do usuário ->> E-mail a ser configurado
+Senha correta
+POP ->> 110
+IMAP ->> 143
+SMTP ->> 587
+SSL/TLS ->> NENHUM(Desmarcar opção)
+Meu servidor de saída (SMTP) requer autenticação : Marcar Checkbox
+
+naoresponda
+n40r3spond4#123

@@ -1,0 +1,97 @@
+<%
+    const fileStatusClass = {
+    'Erro': 'red white-text',
+    'Processando': 'yellow',
+    'Concluído': 'green white-text'
+  }
+%>
+
+<div class="card-panel">
+  <div class="card-content dark-text">
+    <div class="row">
+      <div class="col s8 m8">
+        <h6 class="card-title"><strong>NPU:</strong> <%= suit.identifier %></h6>
+        <p class="dark-text"><strong>Data de criação:</strong>
+          <%= new Intl.DateTimeFormat('pt-BR').format(suit.createdAt) %></p>
+      </div>
+      <div class="col s4 m4">
+        <div class="right-align">
+          <a class="waves-effect waves-light btn-small grey darken-1" href="/lawsuits/<%= suit.id %>">
+            <i class="large material-icons">edit</i>
+          </a>
+          <a class="waves-effect waves-light btn-small grey darken-1" href="/lawsuits/delete/<%= suit.id %>"
+            onclick="return confirm('Quer mesmo deletar este item?');">
+            <i class="large material-icons">delete</i>
+          </a>
+          <a class="waves-effect waves-light btn-small grey darken-1 tooltipped" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfbrL8-ghXKgJGI8Cd9VDvuMeDJvUef38zL-bFShetTVqxNFg/viewform?usp=pp_url&entry.1631894750=<%= suit.identifier %>&entry.2144983331=<%=user.username%>" alt="Solicitar suporte"
+          data-tooltip="Clique para solicitar suporte da equipe técnica">
+            <i class="large material-icons">help_center</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>&nbsp;
+  <div class="card-action">
+    <% suit.people.forEach(function(person){ %>
+    <div class="row">
+      <div class="col s4 m2">
+        <strong class="truncate"><%= person.name %></strong>
+      </div>
+      <div class="col s4 m2 center-align">
+        <div class="chip lighten-1 <%= fileStatusClass[person.status] %>">
+          <span><strong><%= person.status || 'Não iniciado'%></strong></span>
+        </div>
+      </div>
+      <div class="col s4 m6 right-align">
+        <a class="btn-floating btn-small waves-effect waves-light grey modal-trigger tooltipped"
+          href="#modal_<%=person._id%>" data-tooltip="Clique para realizar upload do arquivo do processo"
+          title="Anexar arquivos">
+          <i class="large material-icons">attachment</i>
+        </a>
+        <% if (person.originalFile) { %>
+        <a class="btn-floating btn-small waves-effect waves-light tooltipped" data-position="bottom"
+          data-tooltip="Clique para baixar o arquivo original do processo" target="_blank"
+          href="<%=person.originalFile%>" title="Arquivo do processo original">
+          <i class="large material-icons">remove_red_eye</i>
+        </a>
+        <%}%>
+        <% if (person.csvFile) { %>
+        <a class="btn-floating btn-small waves-effect waves-light tooltipped" data-position="bottom"
+          data-tooltip="Clique para baixar o registro de ponto em formato CSV" target="_blank"
+          href="<%=person.csvFile%>" title="Registro de ponto CSV">
+          <i class="large material-icons">remove_red_eye</i>
+        </a>
+        <%}%>
+        <% if (person.documentData) { %>
+        <a class="btn-floating btn-small waves-effect waves-light grey tooltipped" data-position="bottom"
+          data-tooltip="Clique para visualizar/editar o registro de ponto" href="/punchcards/<%=person.documentData%>"
+          title="Visualizar/editar registro de ponto">
+          <i class="large material-icons">settings</i>
+        </a>
+        <a class="btn-floating btn-small waves-effect waves-light grey tooltipped" data-position="bottom"
+          data-tooltip="Clique para baixar o registro de ponto com regras em formato CSV"
+          href="/punchcards-download/<%=person._id%>/<%=person.documentData%>"
+          title="Baixar registro de ponto com regras">
+          <i class="large material-icons">file_download</i>
+        </a>
+        <a class="btn-floating btn-small waves-effect waves-light grey tooltipped" data-position="bottom"
+          data-tooltip="Clique para baixar o registro de ponto em formato Excel"
+          href="/punchcards-download-excel/<%=person._id%>/<%=person.documentData%>"
+          title="Baixar registro de ponto Excel">
+          <i class="large material-icons">file_download</i>
+        </a>
+        <%}%>
+        <% if (person.csvFile) { %>
+        <a class="btn-floating btn-small waves-effect waves-light grey tooltipped" data-position="bottom"
+          data-tooltip="Clique para saber como importar o arquivo CSV no Excel" target="_blank"
+          href="/docs/como-importar-no-excel.pdf" title="Como importar arquivo no Excel">
+          <i class="material-icons">help_center</i>
+        </a>
+        <%}%>
+      </div>
+    </div>
+    <%- include('../partials/suit-register-modal-item', {person: person, suitId: suit._id, suitIdentifier: suit.identifier}); %>
+    <% }); %>
+  </div>
+</div>

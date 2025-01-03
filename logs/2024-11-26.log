@@ -1,0 +1,16 @@
+2024-11-26 20:59:42.659 DEBUG Request data: Igetulio 
+2024-11-26 22:55:07.808 ERROR Erro ao processar OCR:connect ETIMEDOUT 44.214.84.87:443
+{"message":"connect ETIMEDOUT 44.214.84.87:443","name":"Error","stack":"Error: connect ETIMEDOUT 44.214.84.87:443\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)","config":{"url":"https://ocr.igetulio.com/ocr/34890aa293d903f612b6819a11336364","method":"get","headers":{"Accept":"application/json, text/plain, */*","User-Agent":"axios/0.19.2"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1},"code":"ETIMEDOUT"}
+Error: connect ETIMEDOUT 44.214.84.87:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) 
+2024-11-26 22:56:25.808 ERROR Erro ao processar OCR:connect ETIMEDOUT 44.214.84.87:443
+{"message":"connect ETIMEDOUT 44.214.84.87:443","name":"Error","stack":"Error: connect ETIMEDOUT 44.214.84.87:443\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)","config":{"url":"https://ocr.igetulio.com/ocr/9f719b6856996aad885a55c679510cea","method":"get","headers":{"Accept":"application/json, text/plain, */*","User-Agent":"axios/0.19.2"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1},"code":"ETIMEDOUT"}
+Error: connect ETIMEDOUT 44.214.84.87:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) 
+2024-11-26 23:06:36.316 DEBUG Request data: Igetulio 
+2024-11-26 23:08:15.245 ERROR Erro ao processar OCR:connect ETIMEDOUT 44.214.84.87:443
+{"message":"connect ETIMEDOUT 44.214.84.87:443","name":"Error","stack":"Error: connect ETIMEDOUT 44.214.84.87:443\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)","config":{"url":"https://ocr.igetulio.com/ocr/a726e824661a1e05ca7e039484a2d35a","method":"get","headers":{"Accept":"application/json, text/plain, */*","User-Agent":"axios/0.19.2"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1},"code":"ETIMEDOUT"}
+Error: connect ETIMEDOUT 44.214.84.87:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) 
+2024-11-26 23:32:00.647 DEBUG Request data: Igetulio 
+

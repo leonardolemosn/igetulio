@@ -1,0 +1,98 @@
+<%
+    const fileStatusClass = {
+    'Erro': 'red white-text',
+    'Processando': 'yellow',
+    'Concluído': 'green white-text'
+  }
+%>
+
+<tr>
+  <td><%= person.name %></td>
+  <td><%= person.fiscalCode %></td>
+  <td>
+    <div class="row">
+      <div class="col s6 m2">
+        <a 
+          class="btn-floating btn-small waves-effect waves-light gray modal-trigger tooltipped"
+          href="#modal_<%=person._id%>" data-tooltip="Clique para realizar upload do arquivo do processo" title="Anexar arquivos">
+          <i class="large material-icons">attachment</i>
+        </a>
+      </div>
+
+      <% if (person.originalFile) { %>
+        <div class="col s6 m2">
+          <a 
+          class="btn-floating btn-small waves-effect waves-light gray modal-trigger tooltipped" 
+            data-position="bottom" data-tooltip="Clique para baixar o arquivo original do processo" target="_blank"
+            href="<%=person.originalFile%>" title="Arquivo do processo original">
+            <i class="large material-icons">remove_red_eye</i>
+          </a>
+        </div>
+      <%}%>
+
+      <% if (person.csvFile) { %>
+        <div class="col s6 m2">
+          <a 
+            class="btn-floating btn-small waves-effect waves-light gray modal-trigger tooltipped" 
+            data-position="bottom" data-tooltip="Clique para baixar o registro de ponto original em formato csv" target="_blank"
+            href="<%=person.csvFile%>" title="Registro de ponto csv">
+
+            <i class="large material-icons">remove_red_eye</i>
+
+          </a>
+        </div>
+        <%}%>
+
+        <% if (person.documentData) { %>
+          <div class="col s6 m2">
+            <a 
+              class="btn-floating btn-small waves-effect waves-light gray modal-trigger tooltipped" 
+              data-position="bottom" data-tooltip="Clique para visualizar/editar o registro de ponto"
+              href="/punchcards/<%=person.documentData%>" title="Visualizar/editar registro de ponto">
+  
+              <i class="large material-icons">settings</i>
+  
+            </a>
+          </div>
+          <div class="col s6 m2">
+            <a 
+              class="btn-floating btn-small waves-effect waves-light gray modal-trigger tooltipped" 
+              data-position="bottom" data-tooltip="Clique para baixar o registro de ponto com regras em formato csv"
+              href="/punchcards-download/<%=person._id%>/<%=person.documentData%>" title="Baixar registro de ponto com regras">
+  
+              <i class="large material-icons">file_download</i>
+  
+            </a>
+          </div>
+          <%}%>
+          <% if (person.csvFile) { %>
+            <a class="btn-floating btn-small waves-effect waves-light gray tooltipped" data-position="bottom"
+              data-tooltip="Clique para saber como importar o arquivo csv no Excel" target="_blank"
+              href="/docs/como-importar-no-excel.pdf" title="Como importar arquivo no excel ?">
+              <i class="material-icons left">help_center</i>Como importar o csv no excel?
+            </a>
+            <%}%>
+
+      <!-- 
+      <div class="col s6 m3">
+        <a class="btn-floating btn-small waves-effect waves-light gray" title="Editar reclamante">
+          <i class="large material-icons">edit</i>
+        </a>
+      </div>
+      <div class="col s6 m3">
+        <a class="btn-floating btn-small waves-effect waves-light gray" title="Regras">
+          <i class="large material-icons">settings</i>
+        </a>
+      </div> -->
+    </div>
+  </td>
+  <td>
+    <div class="row">
+      <div class="col s12 m12 center-align">
+        <div class="chip lighten-1  <%= fileStatusClass[person.status] %>">
+          <span ><strong><%= person.status || 'Não iniciado'%></strong></span>
+        </div>
+      </div>
+    </div>
+  </td>
+</tr>

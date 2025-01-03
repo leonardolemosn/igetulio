@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <%- include ('../partials/header-login', {user: user}) %>
+  <main class="container">
+    <div class="row">
+      <div class="col s3 offset-s3">
+        <a class="btn-floating btn-large waves-effect waves-light green" href="/home">
+          <i class="large material-icons">keyboard_backspace</i>
+        </a>
+      </div>
+    </div>
+    <div id="login-page" class="row">
+      <div class="col s12 m6 offset-m6 l6 offset-l3 z-depth-1 card-panel hoverable">
+        <form class="login-form" action="/change-password" method="POST">
+          <div class="row">
+            <div class="col s12 center">
+              <img src="images/logo-positivo-small.png" alt="" class="circle responsive-img valign profile-image-login">
+            </div>
+            <div class="col s10 offset-s1 m10 offset-m1 ">
+              <div class="input-field">
+                <i class="material-icons prefix">account_box</i>
+                <input disabled id="username" name="username" type="text" required  value="<%=user.username%>">
+                <label for="username">Nome de usuário</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">email_outline</i>
+                <input disabled id="email" name="email" type="email" required value="<%=user.email%>">
+                <label for="email">E-mail</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">work_outline</i>
+                <input disabled id="work" name="company" type="text" required value="<%=user.company%>">
+                <label for="work">Nome da empresa</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">lock_outline</i>
+                <input class="validate" id="password" name="password" type="password" required>
+                <label for="password">Senha</label>
+                <span class="helper-text" data-error="Senha é obrigatória"></span>
+              </div>
+              <div class="input-field">
+                <button class="btn waves-effect waves-light col s12">Alterar senha</button>&nbsp;
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+
+  <%- include('../partials/footer') %>
+
+  <% if (error) { %>
+    <script>M.toast({ html: "<%= error %>" });</script>
+  <% } %>
+
+</body>
+
+</html>

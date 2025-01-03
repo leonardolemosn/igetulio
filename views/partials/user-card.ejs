@@ -1,0 +1,47 @@
+<div class="card-panel">
+  <div class="card-content dark-text">
+    <div class="row">
+      <div class="col s8 m8">
+        <h6 class="card-title"><strong>Username:</strong>
+          <%= user.username %>
+        </h6>
+        <p class="dark-text"><strong>Data de criação:</strong>
+          <%= new Intl.DateTimeFormat('pt-BR').format(user.createdAt) %>
+        </p>
+        <p class="dark-text"><strong>Empresa: <%= user.company %></strong></p>
+        <p class="dark-text"><strong>E-mail: <%= user.email %></strong></p>
+        <p class="dark-text"><strong>Admin: <%= user.admin ? 'Sim' : 'Não' %></strong></p>
+        <p class="dark-text"><strong>Ativo: <%= user.active ? 'Sim' : 'Não' %></strong></p>
+      </div>
+      <div class="col s4 m4">
+        <div class="right-align">
+          <a class="waves-effect waves-light btn-small modal-trigger green darken-1" href="#donate_modal_<%= user.id %>">
+            Doar Créditos
+          </a>
+          <%- include('../partials/donate-credits-modal', {user: user}); %>
+          <a class="waves-effect waves-light btn-small <%= user.active ? 'red' : 'green' %> darken-1" href="/users/<%= user.id %>/change-active-status/<%= !user.active%>">
+            <%= user.active ? 'Desativar' : 'Ativar' %>
+          </a>
+          <a class="waves-effect waves-light btn-small  red darken-1" href="/users/<%= user.id %>/delete"
+            onclick="return confirm('Quer mesmo deletar este item?');">
+            Excluir
+          </a>
+          <% if (!user.admin) { %>
+            <a class="waves-effect waves-light btn-small  green darken-1 tooltipped" href="/users/<%= user.id %>/change-admin-status/true" alt="Tornar admin"
+              data-tooltip="Clique para tornar este usuário um administrador">
+              Tornar admin
+            </a>
+          <% } %>
+          <a class="waves-effect waves-light btn-small  green darken-1 tooltipped" href="/consumption/<%= user.username %>" alt="Visualizar consumo"
+            data-tooltip="Clique para visualizar o consumo deste usuário">
+            Visualizar consumo
+          </a>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="divider"></div>&nbsp;
+</div>
+

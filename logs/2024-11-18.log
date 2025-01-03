@@ -1,0 +1,85 @@
+2024-11-18 22:54:23.935 DEBUG Request data: Igetulio 
+2024-11-18 22:54:24.423 DEBUG Usuário ou senha inválidos! 
+2024-11-18 22:54:27.327 DEBUG Request data: Igetulio 
+2024-11-18 23:37:47.240 ERROR  
+2024-11-18 23:41:11.322 DEBUG Request data: Igetulio 
+2024-11-18 23:41:27.580 ERROR  
+2024-11-18 23:42:36.459 DEBUG Request data: Igetulio 
+2024-11-18 23:42:55.519 ERROR  
+2024-11-18 23:44:04.723 DEBUG Request data: Igetulio 
+2024-11-18 23:44:18.168 ERROR  
+2024-11-18 23:46:56.147 DEBUG Request data: Igetulio 
+2024-11-18 23:47:05.513 ERROR Erro ao fazer o upload do arquivo:error:1E08010C:DECODER routines::unsupported
+{"library":"DECODER routines","reason":"unsupported","code":"ERR_OSSL_UNSUPPORTED"}
+Error: error:1E08010C:DECODER routines::unsupported
+    at Sign.sign (node:internal/crypto/sig:131:29)
+    at Object.sign (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jwa/index.js:152:45)
+    at Object.jwsSign [as sign] (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jws/lib/sign-stream.js:32:24)
+    at GoogleToken.requestToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:196:31)
+    at GoogleToken.getTokenAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:135:21)
+    at GoogleToken.getToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:77:21)
+    at JWT.refreshTokenNoCache (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:156:36)
+    at JWT.refreshToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:149:24)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:265:28)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:81:26)
+    at JWT.requestAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:338:34)
+    at JWT.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:332:25)
+    at GoogleAuth.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/googleauth.js:556:23)
+    at async Upload.makeRequest (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:316:21)
+    at async Upload.createURIAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:142:22) 
+2024-11-18 23:47:31.034 ERROR Erro ao fazer o upload do arquivo:error:1E08010C:DECODER routines::unsupported
+{"library":"DECODER routines","reason":"unsupported","code":"ERR_OSSL_UNSUPPORTED"}
+Error: error:1E08010C:DECODER routines::unsupported
+    at Sign.sign (node:internal/crypto/sig:131:29)
+    at Object.sign (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jwa/index.js:152:45)
+    at Object.jwsSign [as sign] (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jws/lib/sign-stream.js:32:24)
+    at GoogleToken.requestToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:196:31)
+    at GoogleToken.getTokenAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:135:21)
+    at GoogleToken.getToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:77:21)
+    at JWT.refreshTokenNoCache (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:156:36)
+    at JWT.refreshToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:149:24)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:265:28)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:81:26)
+    at JWT.requestAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:338:34)
+    at JWT.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:332:25)
+    at GoogleAuth.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/googleauth.js:556:23)
+    at async Upload.makeRequest (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:316:21)
+    at async Upload.createURIAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:142:22) 
+2024-11-18 23:47:50.709 ERROR Erro ao fazer o upload do arquivo:error:1E08010C:DECODER routines::unsupported
+{"library":"DECODER routines","reason":"unsupported","code":"ERR_OSSL_UNSUPPORTED"}
+Error: error:1E08010C:DECODER routines::unsupported
+    at Sign.sign (node:internal/crypto/sig:131:29)
+    at Object.sign (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jwa/index.js:152:45)
+    at Object.jwsSign [as sign] (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jws/lib/sign-stream.js:32:24)
+    at GoogleToken.requestToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:196:31)
+    at GoogleToken.getTokenAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:135:21)
+    at GoogleToken.getToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:77:21)
+    at JWT.refreshTokenNoCache (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:156:36)
+    at JWT.refreshToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:149:24)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:265:28)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:81:26)
+    at JWT.requestAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:338:34)
+    at JWT.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:332:25)
+    at GoogleAuth.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/googleauth.js:556:23)
+    at async Upload.makeRequest (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:316:21)
+    at async Upload.createURIAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:142:22) 
+2024-11-18 23:59:49.846 DEBUG Request data: Igetulio 
+2024-11-19 00:00:00.101 ERROR Erro ao fazer o upload do arquivo:error:1E08010C:DECODER routines::unsupported
+{"library":"DECODER routines","reason":"unsupported","code":"ERR_OSSL_UNSUPPORTED"}
+Error: error:1E08010C:DECODER routines::unsupported
+    at Sign.sign (node:internal/crypto/sig:131:29)
+    at Object.sign (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jwa/index.js:152:45)
+    at Object.jwsSign [as sign] (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/node_modules/jws/lib/sign-stream.js:32:24)
+    at GoogleToken.requestToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:196:31)
+    at GoogleToken.getTokenAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:135:21)
+    at GoogleToken.getToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gtoken/build/src/index.js:77:21)
+    at JWT.refreshTokenNoCache (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:156:36)
+    at JWT.refreshToken (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:149:24)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:265:28)
+    at JWT.getRequestMetadataAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/jwtclient.js:81:26)
+    at JWT.requestAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:338:34)
+    at JWT.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/oauth2client.js:332:25)
+    at GoogleAuth.request (/Users/leonardolemos/Documents/igetulio - código final/node_modules/google-auth-library/build/src/auth/googleauth.js:556:23)
+    at async Upload.makeRequest (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:316:21)
+    at async Upload.createURIAsync (/Users/leonardolemos/Documents/igetulio - código final/node_modules/gcs-resumable-upload/build/src/index.js:142:22) 
+

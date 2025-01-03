@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <%- include ('../partials/header-login', {user: user}) %>
+  
+  <main class="container">
+    <div class="row">
+      <a class="btn-floating btn-large waves-effect waves-light green" href="/home">
+        <i class="large material-icons">keyboard_backspace</i>
+      </a>
+      <div class="col s12 m12">
+        <div class="row">
+          <div class="col card s12 m12">
+            <h6 class="card-title grey-text text-darken-4">Créditos</h6><br>
+            <h5><strong>Seus créditos:</strong> <span><%=pagesBalance%> páginas</span></h5>
+            <div class="card-content">
+              <div class="row">
+                <div class="col s12 m12">
+                  <form action="/payment/redirect" method="POST">
+                    <h6>Selecione o plano que deseja adquirir:</h6>
+                    <% plans.forEach(function(plan, idx){ %>
+                      <p>
+                        <label>
+                          <input name="plan" value="<%=plan._id%>" type="radio" <%= idx === 0 ? 'checked' : ''%> />
+                          <span><%= `${plan.name} - ${ new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(plan.price)} - ${plan.quantity} páginas` %></span>
+                        </label>
+                      </p>
+                    <% }); %>
+
+                    <div class="row">
+                      <br>
+                      <br>
+                      <br>
+                      <div class="input-field">
+                        <i class="material-icons prefix">account_box</i>
+                        <input id="pages" name="units" type="number" min="1" value="1" required>
+                        <label for="pages">Quantas unidades?</label>
+                      </div>
+                    </div>
+
+                    <button class="btn waves-effect waves-light col s4 offset-s4">Ir para Pagamento</button>
+                  </form>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12 m12">
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    
+
+  </script>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

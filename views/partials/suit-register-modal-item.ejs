@@ -1,0 +1,38 @@
+<div id="modal_<%=person._id%>" class="modal">
+  <div class="modal-content">
+    <h4>Adição de arquivo</h4>
+    <div class="row">
+      <form method="POST" enctype="multipart/form-data" action="/lawsuits/file/<%=person._id%>">
+        <input type="hidden" name="suit[_id]" value="<%=suitId%>" />
+        <input type="hidden" name="suit[identifier]" value="<%=suitIdentifier%>" />
+        <input type="hidden" name="person[_id]" value="<%=person._id%>" />
+        <div class="col s12 m10 offset-m1">
+          <h5 class="card-title grey-text text-darken-4">Ponto eletrônico</h5>
+          <div class="input-field">
+            <input placeholder="Ex: 1-5, 6-8, 9-11..." id="interval" type="text" name="pages" class="validate" required>
+            <label for="interval">Intervalo</label>
+            <span class="helper-text" data-error="Intervalo de páginas é obrigatório"></span>
+          </div>
+          <div class="file-field input-field">
+            <div class="btn btn-small">
+              <span>Arquivo do ponto</span>
+              <input type="file" name="file" accept="application/pdf">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <a class="modal-close btn waves-effect waves-light btn-small col s3 m3 offset-m1" href="#!"onclick="javascript: document.getElementById('progress-bar').style.display='none';">
+            <i class="material-icons right">cancel</i> Cancelar</a>
+          <button type="submit" class="btn waves-effect waves-light btn-small col s3 m3  offset-m2" onclick="javascript: document.getElementById('progress-bar').style.display='block';">
+            <i class="material-icons right">cloud</i> Enviar arquivo</button>
+        </div>
+      </form>
+    </div>
+    <div id="progress-bar" class="progress" style="display: none;">
+      <div class="indeterminate"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <%- include('../partials/header-login') %>
+
+  <main class="container">
+    <div class="row">
+      <div class="col s12 m12 center">
+        <form action="/lawsuits/save" method="POST" enctype="multipart/form-data" class="card-panel center-align">
+          <div class="file-field input-field">
+            <div class="btn-floating waves-effect waves-light green">
+              <span><i class="material-icons">add</i></span>
+              <input type="file" name="file" required>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Selecione um arquivo">
+            </div>
+          </div>
+          <button type="submit" class="btn waves-effect waves-light green">
+            Fazer Upload
+          </button>
+        </form>
+
+        <!-- Mostrando saldo de créditos -->
+        <div class="card-panel blue-grey lighten-5 center-align" style="margin-bottom: 20px;">
+          <h5>Você só tem mais <span><%= pagesBalance %></span> créditos restantes</h5>
+          <a href="/credits" class="btn waves-effect waves-light blue">Adquira mais créditos</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script>
+    var timeout;
+
+    function stopTimeout() {
+      clearTimeout(timeout);
+    }
+
+    function startTimeout() {
+      timeout = setTimeout(function() {
+        window.location.reload(1);
+      }, 50000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      startTimeout();
+      $('.tooltipped').tooltip();
+      $('.modal').modal({ dismissible: true, onOpenEnd: stopTimeout, onCloseEnd: startTimeout });
+    });
+  </script>
+</body>
+
+</html>

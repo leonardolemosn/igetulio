@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <%- include ('../partials/header-login') %>
+
+  <main class="container">
+
+    <div class="">
+      <div class="row">
+        <a class="btn-floating btn-large waves-effect waves-light green" href="/home">
+          <i class="large material-icons">keyboard_backspace</i>
+        </a>
+        <div class="col s12 m12">
+          <div class="row">
+            <form class="card-panel" action="/users" method="GET">
+              <div class="input-field">
+                <i class="material-icons prefix">search</i>
+                <input id="icon_prefix" type="text" name="username" value="<%= locals.username %>" class="validate">
+                <label for="icon_prefix">Pesquise pelo username</label>
+                <button class="btn waves-effect waves-light col s4 offset-s4">Pesquisar</button>
+              </div>
+            </form>
+            &nbsp;
+
+            <% users.docs.forEach(function(user){ %>
+              <%- include('../partials/user-card', {user: user}); %>
+            <% }); %>
+
+            <div class="card-panel col s12 m12 center">
+              <ul class="pagination">
+                <li class="waves-effect <%= users.hasPrevPage ? '': 'disabled'%>"><a href="<%=users.hasPrevPage ? `?page=${users.prevPage}` : '/home' %>"><i class="material-icons">chevron_left</i></a></li>
+                <% (new Array(users.totalPages)).fill(undefined).forEach(function (page, idx) {%>
+                  <li class="<%= users.page === idx + 1 ? 'active blue-grey': ''%>"><a href="?page=<%=idx+1%>"><%=idx + 1%></a></li>
+                <%});%>
+                <li class="waves-effect <%= users.hasNextPage ? '': 'disabled'%>"><a href="<%=users.hasNextPage ? `?page=${users.nextPage}` : `` %>"><i class="material-icons">chevron_right</i></a></li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <%- include ('../partials/footer') %>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // var elems = document.querySelectorAll('.fixed-action-btn');
+      // var instances = M.FloatingActionButton.init(elems, {});
+    });
+
+    $(document).ready(function () {
+      // $('.fixed-action-btn').floatingActionButton();
+      $('.tooltipped').tooltip();
+      $('.modal').modal();
+    });
+  </script>
+
+</body>
+
+</html>

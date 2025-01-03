@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <%- include ('../partials/header-login', {user: user}) %>
+
+  <main class="container">
+
+    <!-- Planilha -->
+    <div class="row">
+      <a class="btn-floating btn-large waves-effect waves-light green" href="/punchcards/<%= peopleId %>">
+        <i class="large material-icons">keyboard_backspace</i>
+      </a>
+      <div class="col card s12">
+
+        <div class="row col s12">
+          <h6>Legendas:</h6>
+          <div class="row col s5">
+            <div class="card-panel red white-text s3 offset-s1">Marcações ímpares <span class="new badge grey" data-badge-caption=""><%= isOddCount %></div>
+            <div class="card-panel yellow s3 offset-s1">Inseridos pelo sistema <span class="new badge grey" data-badge-caption=""><%= isGapCount %></div>
+          </div>
+        </div>
+        <form method="POST" action="/punchcards-time/<%= punchcardId %>">
+        <table>
+          <h6 class="card-title grey-text text-darken-4">Edição de registros de ponto</h6>
+          <thead>
+            <tr>
+              <% header.forEach(function(item){ %>
+              <th><%=item%></th>
+              <% }); %>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% punchcard.forEach(function(item){ %>
+            <% if (item.isOdd) { %>
+            <tr class="red white-text">
+              <%} else if(item.isGap){%>
+            <tr class="yellow">
+              <%} else {%>
+            <tr>
+              <%}%>
+              
+              <td><%=item.date%></td>
+              <% var id = item._id %>
+              <% item.times.forEach(function(hour){ %>
+              <td>
+                <div class="input-field">
+                  <input class="center" id="times" name="doc[<%=item._id%>]times[]" type="text" value="<%=hour%>">
+                </div>
+              </td>
+              <% }); %>
+              <% (new Array(header.length - item.times.length - 1)).fill(undefined).forEach(function(i){ %>
+              <td>
+                <div class="input-field">
+                  <input class="center" id="times" name="doc[<%=item._id%>]times[]" type="text" value="">
+                </div>
+              </td>
+              <% }); %>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <div class="col s1 offset-s8  m1 offset-m5 fixed-action-btn horizontal">
+          <button class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">save</i>
+          </button>
+        </div>
+      </form>
+        <div class="card-content"></div>
+      </div>
+    </div>
+
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script>
+
+    $(document).ready(function () {
+    });
+
+    function checkOrUncheckAll(element) {
+      var checked = $(element).prop('checked');
+      console.log(element);
+      var checkboxes = $( "input:checkbox");
+      checkboxes.each( function () {
+        this.checked = checked;
+      });
+    }
+  </script>
+
+</body>
+
+</html>

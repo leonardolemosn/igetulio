@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<main class="container">
+  <div id="login-page" class="row">
+    <div class="col s12 m6 offset-m6 l6 offset-l3 z-depth-1 card-panel hoverable">
+      <form class="login-form" action="/signin" method="POST">
+        <div class="row">
+          <div class="col s12 center">
+            <img src="images/logo-positivo-small.png" alt="" class="circle responsive-img valign profile-image-login">
+          </div>
+          <div class="col s10 offset-s1 m10 offset-m1 ">
+            <div class="input-field">
+              <i class="material-icons prefix">account_box</i>
+              <input class="validate" id="username" name="username" type="text" value="<%=username%>" required>
+              <label for="username">Nome de usuário</label>
+              <span class="helper-text" data-error="Nome de usuário é obrigatório"></span>
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">lock_outline</i>
+              <input class="validate" id="password" name="password" type="password" required>
+              <label for="password">Senha</label>
+              <span class="helper-text" data-error="Senha é obrigatória"></span>
+            </div>
+            <div class="input-field">
+              <button class="btn waves-effect waves-light col s12">Login</button>&nbsp;
+              <p class="center-align"><a href="/register">Registre-se</a></p>
+              <p class="center-align"><a href="/forgot-password">Esqueci minha senha</a></p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+    
+    <%- include('../partials/footer') %>
+
+    <% if (error) { %>
+      <script>M.toast({html: "<%= error %>"});</script>
+    <% } %>
+    
+    
+  </body>
+</html>

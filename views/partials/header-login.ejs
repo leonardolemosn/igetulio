@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header>
+    <nav role="navigation" class="blue-grey darken-4">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo">
+          <img src="/images/logo-positivo-small.png" width="150px" alt="iGetulio Logo" style="margin-bottom: 100px; margin-top: -40px;">
+        </a>
+        <a href="#" class="dropdown-trigger right" data-target="dropdown-menu" style="color: white; margin-top: 1px;">
+  <i class="material-icons" style="font-size: 48px;">account_circle</i>
+      </div>
+    </nav>
+  </header>
+
+  <ul id="dropdown-menu" class="dropdown-content" style="background-color: #37474f;">
+    <li><a class="waves-effect" href="/home">Tela de inicio</a></li>
+    <li><a class="waves-effect" href="/credits">Adquirir Créditos</a></li>
+    <% if (user.admin) { %>
+      <li><a class="waves-effect" href="/users">Usuários</a></li>
+      <li><a class="waves-effect" href="/credit-plans">Gerenciar Planos</a></li>
+    <% } %>
+    <li><a class="waves-effect" href="/consumption">Histórico de uso</a></li>
+    <li><a class="waves-effect" href="/profile">Perfil</a></li>
+    <li><a class="waves-effect" href="/logout">Sair</a></li>
+  </ul>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var dropdownElems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(dropdownElems, { alignment: 'right', coverTrigger: false });
+  });
+</script>
+</body>
+
+</html>

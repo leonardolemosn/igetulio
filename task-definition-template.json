@@ -1,0 +1,54 @@
+{
+  "family": "${APP_NAME}",
+  "containerDefinitions": [
+    {
+      "name": "${APP_NAME}",
+      "image": "${IMAGE_NAME}",
+      "cpu": 256,
+      "memory": 512,
+      "memoryReservation": 512,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        },
+        {
+          "containerPort": 443,
+          "hostPort": 443,
+          "protocol": "tcp"
+        },
+        {
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/${APP_NAME}",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      }
+    }
+  ],
+  "taskRoleArn": "arn:aws:iam::666624136412:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::666624136412:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "tags": [
+    {
+      "key": "customer",
+      "value": "${CUSTOMER}"
+    }
+  ]
+}

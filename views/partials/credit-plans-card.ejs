@@ -1,0 +1,31 @@
+<div class="card-panel">
+  <div class="card-content dark-text">
+    <div class="row">
+      <div class="col s8 m8">
+        <h6 class="card-title"><strong>Plano:</strong> <%= plan.name %></h6>
+        <h6 class="card-title"><strong>Preço Por Página:</strong>
+          <%= new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(plan.price / plan.quantity) %> por página
+        </h6>
+        <h6 class="dark-text"><strong>Preço do plano:</strong> <%= new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(plan.price) %> </h6>
+        <h6 class="dark-text"><strong>Quantidade de páginas do plano: <%= new Intl.NumberFormat('pt-BR').format(plan.quantity) %> </strong></h6>
+        <p class="dark-text"><strong>Data de criação:</strong>
+          <%= new Intl.DateTimeFormat('pt-BR').format(plan.createdAt) %>
+        </p>
+      </div>
+      <div class="col s4 m4">
+        <div class="right-align">
+          <a class="waves-effect waves-light btn-small green darken-1" href="/credit-plans/edit/<%= plan.id %>">
+            Editar
+          </a>
+          <a class="waves-effect waves-light btn-small  red darken-1" href="/credit-plans/delete/<%= plan.id %>"
+            onclick="return confirm('Quer mesmo deletar este item?');">
+            Excluir
+          </a>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="divider"></div>&nbsp;
+</div>

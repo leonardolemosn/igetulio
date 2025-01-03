@@ -1,0 +1,25 @@
+<div id="donate_modal_<%= user.id %>" class="modal">
+  <div class="modal-content">
+    <h4>Doar Créditos</h4>
+    <div class="row">
+      <form method="POST" action="/donate/<%= user.id %>">
+        <div class="col s12 m10 offset-m1">
+          <div class="input-field">
+            <input placeholder="Quantidade" id="credits" step="1" type="number" name="credits" class="validate" required>
+            <label for="credits">Quantidade</label>
+            <span class="helper-text" data-error="credito de páginas é obrigatório"></span>
+          </div>
+        </div>
+        <div class="row">
+          <a class="modal-close btn waves-effect waves-light btn-small col s3 m3 offset-m1" href="#!"onclick="javascript: document.getElementById('progress-bar').style.display='none';">
+            <i class="material-icons right">cancel</i> Cancelar</a>
+          <button type="submit" class="btn waves-effect waves-light btn-small col s3 m3  offset-m2" onclick="javascript: document.getElementById('progress-bar').style.display='block';">
+            <i class="material-icons right">cloud</i> Doar Créditos</button>
+        </div>
+      </form>
+    </div>
+    <div id="progress-bar" class="progress" style="display: none;">
+      <div class="indeterminate"></div>
+    </div>
+  </div>
+</div>

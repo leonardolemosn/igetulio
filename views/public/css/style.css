@@ -1,0 +1,30 @@
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: #546e7a;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+
+  /* .input-field input:focus + label {
+    color: white !important;
+  }
+
+  .row .input-field input:focus {
+    border-bottom: 1px solid white !important;
+    box-shadow: 0 1px 0 0 white !important
+  }
+
+  .input-field  > .prefix > .active {
+    color: white !important;
+  } */
+/* 
+  .chip {
+    background-color: yellow;
+  } */
+  

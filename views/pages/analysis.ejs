@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  
+  <main class="container">
+    <div class="row">
+      <div class="col s3 offset-s4">
+        <div class="card">
+          <div class="card-image">
+            <img src="images/clock2.png">
+            <span class="card-title">Aguardando Aprovação</span>
+          </div>
+          <div class="card-content">
+            <p>Estamos no processo de análise. <br/><br/>Em até 24 horas você terá novidades sobre a sua conta do iGetulio no seu e-mail!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script>
+
+    $(document).ready(function () {
+      setTimeout(function(){
+        window.location.reload(1);
+      }, 50000);
+    });
+  </script>
+
+</body>
+
+</html>

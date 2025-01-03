@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head') %>
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <%- include ('../partials/header-login', {user: user}) %>
+
+  <main class="container">
+
+    <!-- Regras -->
+    <div class="row">
+      <a class="btn-floating btn-large waves-effect waves-light green" href="/lawsuits/<%= suitId %>">
+        <i class="large material-icons">keyboard_backspace</i>
+      </a>
+      <div class="col card s12">
+
+        <h6 class="card-title grey-text text-darken-4">Regras</h6>
+
+        <div class="card-content">
+
+          <div class="row">
+            <form class="col s12" method="POST" action="/punchcards-rules/<%= punchcardId %>">
+              <div class="row">
+                <div class="input-field col s3">
+                  <label>
+                    <input id="checkbox-rule-one" type="checkbox" name="addStartTime" class="filled-in" />
+                    <span>Adicionar tempo ao início da jornada</span>
+                  </label>
+                </div>
+                
+                <div class="input-field col s2">
+                  <input placeholder="Ex: 120" id="initial-hours" name="addMinutesToStart" type="number" class="validate">
+                  <label for="first_name">Qtd. de minutos</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s3">
+                  <label>
+                    <input id="checkbox-rule-two" type="checkbox" name="addEndTime"  class="filled-in" />
+                    <span>Adicionar tempo ao fim da jornada</span>
+                  </label>
+                </div>
+                
+                <div class="input-field col s2">
+                  <input placeholder="Ex: 120" id="end-hours" name="addMinutesToEnd" type="number" class="validate">
+                  <label for="first_name">Qtd. de minutos</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s3">
+                  <label>
+                    <input id="checkbox-rule-four" type="checkbox" name="addIntervalTime"  class="filled-in" />
+                    <span>Adicionar tempo de intervalo entre a jornada</span>
+                  </label>
+                </div>
+                
+                <div class="input-field col s2">
+                  <input placeholder="Ex: 60" id="middle-hours" name="intervalTime" type="text" class="validate">
+                  <label for="first_name">Qtd. de minutos</label>
+                </div>
+
+                <div class="input-field col s12">
+                  <small>Obs: Só serão adicionados intervalos para pontos com apenas 2 registros (entrada/saída) e com no mínimo 6 horas de diferença</small>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s4">
+                  <label>
+                    <input id="checkbox-rule-three" type="checkbox" name="onlyStartAndEnd" class="filled-in" />
+                    <span>Considerar apenas início e fim da jornada</span>
+                  </label>
+                </div>
+              </div>
+
+              
+
+              <div class="row">
+                <div class="col s12 m6 offset-m6">
+                  <button type="submit" class="btn waves-effect waves-light right btn-small col s12 m6">
+                    <i class="material-icons right">check</i> Aplicar</button>
+                </div>
+              </div>
+              <input type="hidden" name="suitId" value="<%= suitId %>"/>
+              <input type="hidden" name="peopleId" value="<%= peopleId %>"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Planilha -->
+    <div class="row">
+      <div class="col card s12">
+
+        <div class="row col s12">
+          <div class="col s3">
+            <div class="card-panel red white-text">Marcações ímpares <span class="new badge grey" data-badge-caption=""><%= isOddCount %></span> </div>
+          </div>
+          <div class="col s3">
+            <div class="card-panel yellow">Inseridos pelo sistema <span class="new badge grey" data-badge-caption=""><%= isGapCount %></span></div>
+          </div>
+        </div>
+        <table>
+          <div class="row col s12">
+            <h6 class="card-title grey-text text-darken-4">Registros de ponto</h6>
+          </div>
+
+          <thead>
+            <tr>
+              <th class="center">
+                <p>
+                  <label>
+                    <input id="checkbox-all" type="checkbox" class="filled-in" onclick="checkOrUncheckAll(this)" />
+                    <span></span>
+                  </label>
+                </p>
+              </th>
+              <% header.forEach(function(item){ %>
+              <th><%=item%></th>
+              <% }); %>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% punchcard.forEach(function(item){ %>
+            <% if (item.isOdd) { %>
+            <tr class="red white-text">
+              <%} else if(item.isGap){%>
+            <tr class="yellow">
+              <%} else {%>
+            <tr>
+              <%}%>
+              
+        
+              <td class="center">
+                <p>
+                  <label>
+                    <input id="<%=item._id%>" type="checkbox" class="filled-in chbox" onclick="checkOrUncheck(this)" />
+              <span></span>
+              </label>
+              </p>
+              </td>
+
+              <td><%=item.date%></td>
+              <% item.times.forEach(function(hour){ %>
+              <td><%=hour%></td>
+              <% }); %>
+              <% (new Array(header.length - item.times.length - 1)).fill(undefined).forEach(function(i){ %>
+              <td></td>
+              <% }); %>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <form method="POST" id="punchcards-form" action="/punchcards/<%= punchcardId %>">
+          <% punchcard.forEach(function(item){ %>
+          <input type="hidden" id="hdn_<%=item._id%>" class='input-form-hidden' name="punchcards[<%=item._id%>]" value="false" />
+          <%})%>
+          <div class="col s1 offset-s8  m1 offset-m5 fixed-action-btn horizontal">
+            <button class="btn-floating btn-large waves-effect waves-light green" onclick="editPunchcards(this); return false;">
+              <i class="large material-icons">edit</i>
+            </button>
+          </div>
+          <input type="hidden" name="suitId" value="<%= suitId %>"/>
+          <input type="hidden" name="peopleId" value="<%= peopleId %>"/>
+          <input type="hidden" name="isOddCount" value="<%= isOddCount %>"/>
+          <input type="hidden" name="isGapCount" value="<%= isGapCount %>"/>
+        </form>
+        <div class="card-content"></div>
+      </div>
+    </div>
+
+    </div>
+  </main>
+
+  <%- include ('../partials/warn-modal') %>
+  <%- include('../partials/footer') %>
+
+  <script>
+
+    var checkboxes = undefined;
+    var punchcards = {};
+
+    $(document).ready(function () {
+      checkboxes = $(".chbox");
+      checkboxes.each(function () {
+        punchcards[this.id] = eval(this.checked);
+      });
+      $('#modal-warn').modal();
+    });
+
+    function editPunchcards() {
+      if(Object.values(punchcards).some((punchcard) => punchcard)) {
+        $('#punchcards-form').submit();
+      } else {
+        $('#modal-warn').modal('open');
+      }
+
+
+    }
+    function checkOrUncheckAll(element) {
+      var checked = $(element).prop('checked');
+      checkboxes.each(function () {
+        this.checked = checked;
+        $('#hdn_' + [this.id]).val(this.checked);
+      });
+    }
+
+    function checkOrUncheck(element) {
+      var checkboxId = $(element).prop('id');
+      var checkboxChecked = $(element).prop('checked');
+      punchcards[checkboxId] = eval(checkboxChecked);
+      $('#hdn_' + [checkboxId]).val(checkboxChecked);
+      if (!checkboxChecked) {
+        $('#checkbox-all').prop('checked', false);
+      } else if (Object.values(punchcards).reduce(function (acc, value) { return (acc && value) })) {
+        $('#checkbox-all').prop('checked', true);
+      }
+
+
+    }
+  </script>
+
+</body>
+
+</html>
